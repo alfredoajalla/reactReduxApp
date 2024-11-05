@@ -17,34 +17,28 @@ const todoReducers = (state = initialState, action) => {
 
     case TOGGLE_TODO:
       return {
-        todos: state.todos.map((todo, index) => {
-          index === action.payload.id ? { ...todo, completed: !todo.completed } : todo;
-        }),
+        todos: state.todos.map((todo, index) => index === action.payload.id ? { ...todo, completed: !todo.completed } : todo),
         filter: state.filter,
         searchTerm: state.searchTerm
       }
 
     case REMOVE_TODO:
       return {
-        todos: state.todos.filter((todo, index) => { index !== action.payload.id }),
+        todos: state.todos.filter((todo, index) => index !== action.payload.id),
         filter: state.filter,
         searchTerm: state.searchTerm
       }
 
     case MARK_COMPLETED:
       return {
-        todos: state.todos.map((todo, index) => {
-          index === action.payload.id ? { ...todo, completed: true } : todo;
-        }),
+        todos: state.todos.map((todo, index) => index === action.payload.id ? { ...todo, completed: true } : todo),
         filter: state.filter,
         searchTerm: state.searchTerm
       }
 
     case MARK_INCOMPLETED:
       return {
-        todos: state.todos.map((todo, index) => {
-          index === action.payload.id ? { ...todo, completed: false } : todo;
-        }),
+        todos: state.todos.map((todo, index) => index === action.payload.id ? { ...todo, completed: false } : todo),
         filter: state.filter,
         searchTerm: state.searchTerm
       }
